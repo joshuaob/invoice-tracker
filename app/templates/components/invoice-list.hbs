@@ -1,0 +1,28 @@
+{{invoice-form saveInvoice=saveInvoice currentInvoice=currentInvoice}}
+
+<label for="">Filter by date</label>
+{{input type="date" name="" value=filteredDate placeholder=""}}
+
+<ul class="collection with-header">
+  <li class="collection-header">
+    <a href="#" class="btn right" {{action "showInvoiceForm"}}>Add invoice</a>
+    <h4>Invoices ({{invoicesFilteredByDate.length}})</h4>
+  </li>
+
+  {{#each invoicesFilteredByDate as |invoice|}}
+    <li class="collection-item">
+      <p>#{{invoice.id}}</p>
+      <p>£{{invoice.amount}}</p>
+      <p>
+        <small>{{invoice.date}}</small>
+      </p>
+
+      <p class="right-align">
+        <a href="#" {{action "showInvoiceForm" invoice}}>Edit</a> |
+        <a href="#" {{action "deleteInvoice" invoice}}>Delete</a>
+      </p>
+    </li>
+  {{/each}}
+</ul>
+
+<h5 class="right-align">Total: £{{invoicesTotal}}</h5>
