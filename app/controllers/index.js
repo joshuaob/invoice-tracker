@@ -1,11 +1,20 @@
 import Controller from '@ember/controller';
 
-const invoices = [];
-
 export default Controller.extend({
   actions: {
-    getInvoices() {
-      return invoices
+    saveInvoice(invoice, amount, date) {
+      if (invoice.get("id") === null) {
+        invoice.set("id", Date.now());
+        this.get("model").pushObject(invoice);
+      }
+
+      invoice.set("amount", amount);
+      invoice.set("date", date);
+    },
+
+    deleteInvoice(invoice) {
+      let objIndex = this.get("model").findIndex((obj => obj.id == invoice.id));
+      this.get("model").removeAt(objIndex);
     }
   }
 });
