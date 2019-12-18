@@ -1,0 +1,13 @@
+<div id="invoice-form" class="modal">
+  <div class="modal-content">
+    <h4>Invoice form</h4>
+    {{input type="hidden" name="" value=currentInvoice.id}}
+    {{input type="number" name="" value=currentInvoice.amount placeholder="Amount"}}
+    {{input type="date" name="" value=currentInvoice.date placeholder="date"}}
+  </div>
+
+  <div class="modal-footer">
+    <a href="" class="waves-effect waves-green" {{action "saveInvoice"}}>Save</a>
+    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+  </div>
+</div>
